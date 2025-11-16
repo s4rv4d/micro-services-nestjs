@@ -1,0 +1,10 @@
+#MongoDB
+services:
+  mongo:
+    image: mongo:latest
+    restart: always #if mongo crashes always restart
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - 27017:27017
