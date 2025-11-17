@@ -1,4 +1,11 @@
-import { Controller, Get, Post, Body, ValidationPipe } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  ValidationPipe,
+  Param,
+} from '@nestjs/common';
 import { CreateRiderCoordDto } from './dto/createRiderCoord.dto';
 import { RiderCoordService } from './rider-coord.service';
 
@@ -6,9 +13,9 @@ import { RiderCoordService } from './rider-coord.service';
 export class RiderCoordController {
   constructor(private readonly riderCoordService: RiderCoordService) {}
 
-  @Get()
-  getRiderCoordinates() {
-    return { lat: 40.7128, lon: -74.006 }; // Example coordinates
+  @Get(':id')
+  getRiderCoordinates(@Param('id') id: string) {
+    return this.riderCoordService.getRiderCoordinates(id);
   }
 
   @Post()
